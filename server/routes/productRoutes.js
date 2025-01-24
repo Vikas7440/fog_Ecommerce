@@ -1,21 +1,21 @@
 import express from "express";
 import {
-    brainTreePaymentController,
-    braintreeTokenController,
-    createProductController,
-    deleteProductController,
-    getProductController,
-    getSingleProductController,
-    productCategoryController,
-    productCountController,
-    productFiltersController,
-    productListController,
-    productPhotoController,
-    realtedProductController,
-    searchProductController,
-    updateProductController,
-    // searchProductAI,
-    aifilter,
+  brainTreePaymentController,
+  braintreeTokenController,
+  createProductController,
+  deleteProductController,
+  getProductController,
+  getSingleProductController,
+  productCategoryController,
+  productCountController,
+  productFiltersController,
+  productListController,
+  productPhotoController,
+  realtedProductController,
+  searchProductController,
+  updateProductController,
+  // searchProductAI,
+  aifilter,
 } from "../controllers/productController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import formidable from "express-formidable";
@@ -24,19 +24,18 @@ const router = express.Router();
 
 //routes
 router.post(
-    "/create-product",
-    requireSignIn,
-    isAdmin,
-    formidable(),
-    createProductController
+  "/create-product",
+  requireSignIn,
+  isAdmin,
+  formidable(),
+  createProductController
 );
 //routes
 router.put(
-    "/update-product/:pid",
-    requireSignIn,
-    isAdmin,
-    formidable(),
-    updateProductController
+  "/update-product/:pid",
+  requireSignIn,
+  isAdmin,
+  updateProductController
 );
 
 //get products

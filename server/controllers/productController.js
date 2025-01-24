@@ -130,8 +130,13 @@ export const deleteProductController = async (req, res) => {
 
 //upate product
 export const updateProductController = async (req, res) => {
+  const product = req.body;
+  console.log("old", product);
   try {
-    const { name, description, price, quantity } = req.fields;
+    const name = product.name;
+    const price = product.price;
+    const quantity = product.quantity;
+    const description = product.description;
     //validation
     switch (true) {
       case !name:
@@ -146,9 +151,11 @@ export const updateProductController = async (req, res) => {
 
     const products = await productModel.findByIdAndUpdate(
       req.params.pid,
-      { ...req.fields, slug: slugify(name) },
+      { ...req.body, slug: slugify(name) },
       { new: true }
     );
+    console.log("new", products);
+
     await products.save();
     res.status(201).send({
       success: true,
